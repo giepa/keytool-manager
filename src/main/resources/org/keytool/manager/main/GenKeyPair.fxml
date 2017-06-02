@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.keytool.manager.main.GenKeyPairController">
+
+    <center>
+        <HBox spacing="10.0" >
+            <children>
+
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label text="Alias" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <TextField fx:id="alias" prefWidth="100.0" />
+                        <Label id="aliasMsg" managed="false" visible="false" HBox.hgrow="ALWAYS" />
+
+                        <Label text="Key Algorithm" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="selectAlg" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="RSA" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                        <Label id="selectAlgMsg" managed="false" visible="false" HBox.hgrow="ALWAYS" />
+
+                        <Label text="Key Size" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <TextField fx:id="keySize" prefWidth="100.0" text="2048" />
+                        <Label id="keySizeMsg" managed="false" visible="false" HBox.hgrow="ALWAYS" />
+
+                        <Label text="Key Password" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <PasswordField fx:id="password" prefWidth="100.0" />
+                        <Label id="passwordMsg" managed="false" visible="false" HBox.hgrow="ALWAYS" />
+
+                        <Label text="Signiture Algorithm" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" />
+                        <ComboBox fx:id="selectSignAlg" HBox.hgrow="ALWAYS">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="MD2withRSA" />
+                                    <String fx:value="MD5withRSA" />
+                                    <String fx:value="SHA1withRSA" />
+                                    <String fx:value="SHA256withRSA" />
+                                    <String fx:value="SHA384withRSA" />
+                                    <String fx:value="SHA512withRSA" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                        <Label id="selectSignAlgMsg" managed="false" visible="false" HBox.hgrow="ALWAYS" />
+
+                    </children>
+                </VBox>
+                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label text="Common Name (CN)" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <TextField fx:id="enterCN" />
+                        <Label id="enterCNMsg" managed="false" visible="false" HBox.hgrow="ALWAYS" />
+
+                        <Label text="Organisation Unit (OU)" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <TextField fx:id="enterOU" />
+                        <Label id="enterOUMsg" managed="false" visible="false" HBox.hgrow="ALWAYS" />
+
+                        <Label text="Organisation (O)" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                        <TextField fx:id="enterO" />
+                        <Label id="enterOMsg" managed="false" visible="false" HBox.hgrow="ALWAYS" />
+
+                        <Label text="Locality (L)" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+                        <TextField fx:id="enterL" />
+                        <Label id="enterOUMsg" managed="false" visible="false" HBox.hgrow="ALWAYS" />
+
+                        <Label text="State (ST)" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+                        <TextField fx:id="enterST" />
+                        <Label id="enterSTMsg" managed="false" visible="false" HBox.hgrow="ALWAYS" />
+
+                        <Label text="Country (C)" GridPane.columnIndex="0" GridPane.rowIndex="12" />
+                        <TextField fx:id="enterC" />
+                        <Label id="enterCMsg" managed="false" visible="false" HBox.hgrow="ALWAYS" />
+
+                        <Label text="Email (E)" GridPane.columnIndex="0" GridPane.rowIndex="14" />
+                        <TextField fx:id="enterE" />
+                        <Label id="enterEMsg" managed="false" visible="false" HBox.hgrow="ALWAYS" />
+
+                    </children>
+                </VBox>
+
+            </children>
+        </HBox>
+
+   </center>
+    <bottom>
+        <HBox spacing="5.0">
+            <children>
+                <Button onAction="#cancelClicked" text="Cancel" />
+                <Button fx:id="generateButton" onAction="#generateClicked" text="Generate" />
+            </children>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+        </HBox>
+
+    </bottom>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</BorderPane>

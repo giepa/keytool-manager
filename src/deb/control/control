@@ -1,0 +1,9 @@
+Package: keytool-manager
+Version: 0.0.1-1
+Section: utils
+Priority: optional
+Architecture: all
+Description: Graphical Java Keytool Manager
+ A tool to generate keypairs and sign certificates for use in java apps
+Maintainer: Gideon Maree <gideon.maree@gmail.com>
+Depends: default-jre | java8-runtime

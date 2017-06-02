@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.keytool.manager.main.CertDetailsController">
+
+    <center>
+
+            <HBox spacing="10.0">
+                <children>
+
+                    <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                        <children>
+
+                            <Label text="Signiture Algorithm" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showSigAlg" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="Key Algorithm" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showAlg" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="Key Size" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showKeySize" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="Version" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showVersion" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="Issuer" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showIssuer" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="Serial Number" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showSerial" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="Valid From" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showValidFrom" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="Valid Until" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showValidUntil" editable="false" VBox.vgrow="ALWAYS" />
+
+                        </children>
+                    </VBox>
+                    <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                        <children>
+                            <Label text="Common Name (CN)" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showCN" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="Organisation Unit (OU)" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showOU" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="Organisation (O)" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showO" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="Locality (L)" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showL" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="State (ST)" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showST" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="Country (C)" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showC" editable="false" VBox.vgrow="ALWAYS" />
+
+                            <Label text="Email (E)" VBox.vgrow="ALWAYS" />
+                            <TextField fx:id="showE" editable="false" VBox.vgrow="ALWAYS" />
+
+                        </children>
+                    </VBox>
+
+                </children>
+            </HBox>
+
+   </center>
+    <bottom>
+        <HBox spacing="5.0">
+            <children>
+                <Button onAction="#cancelClicked" text="Close" />
+            </children>
+         <BorderPane.margin>
+            <Insets top="20.0" />
+         </BorderPane.margin>
+        </HBox>
+
+    </bottom>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</BorderPane>
