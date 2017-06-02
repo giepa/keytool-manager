@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import com.cathive.fonts.fontawesome.FontAwesomeIconView?>
+
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.control.TreeItem?>
+<?import javafx.scene.control.Tooltip?>
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.keytool.manager.main.MainController">
+         <top>
+            <ToolBar prefHeight="40.0" prefWidth="372.0" BorderPane.alignment="CENTER">
+              <items>
+                <MenuButton fx:id="newKeyStore" >
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#newJKSKeyStoreClicked" text="New JKS Keystore" />
+                    </items>
+                    <graphic>
+                        <FontAwesomeIconView icon="ICON_FILE"/>
+                    </graphic>
+                    <tooltip>
+                        <Tooltip text="Create new keystore"/>
+                    </tooltip>
+                </MenuButton>
+                  <Button fx:id="openKeyStore" onAction="#openKeyStoreClicked">
+                      <graphic>
+                          <FontAwesomeIconView icon="ICON_FOLDER_OPEN"/>
+                      </graphic>
+                      <tooltip>
+                          <Tooltip text="Open an existing keystore"/>
+                      </tooltip>
+                  </Button>
+                  <Button fx:id="saveKeyStore" onAction="#saveKeyStoreClicked">
+                      <graphic>
+                          <FontAwesomeIconView icon="ICON_SAVE"/>
+                      </graphic>
+                      <tooltip>
+                          <Tooltip text="Save changes"/>
+                      </tooltip>
+                  </Button>
+                  <Button fx:id="saveAs" onAction="#saveAsClicked">
+                      <graphic>
+                          <FontAwesomeIconView icon="ICON_FILE"/>
+                      </graphic>
+                      <tooltip>
+                          <Tooltip text="Save as"/>
+                      </tooltip>
+                  </Button>
+                  <Button fx:id="newKeyPair" onAction="#newKeyPairClicked">
+                      <graphic>
+                          <FontAwesomeIconView icon="ICON_KEY"/>
+                      </graphic>
+                      <tooltip>
+                          <Tooltip text="Generate a new keypair"/>
+                      </tooltip>
+                  </Button>
+                  <Button fx:id="generateCsr" onAction="#generateCsr">
+                      <graphic>
+                          <FontAwesomeIconView icon="ICON_ENVELOPE"/>
+                      </graphic>
+                      <tooltip>
+                          <Tooltip text="Generate a certificate signing request"/>
+                      </tooltip>
+                  </Button>
+                  <Button fx:id="importCert" onAction="#importCert">
+                      <graphic>
+                          <FontAwesomeIconView icon="ICON_SHIELD"/>
+                      </graphic>
+                      <tooltip>
+                          <Tooltip text="Import the CA response"/>
+                      </tooltip>
+                  </Button>
+                  <Button fx:id="viewDetails" onAction="#viewDetails">
+                      <graphic>
+                          <FontAwesomeIconView icon="ICON_INFO_SIGN"/>
+                      </graphic>
+                      <tooltip>
+                          <Tooltip text="View Certificate details"/>
+                      </tooltip>
+                  </Button>
+              </items>
+            </ToolBar>
+         </top>
+    <center>
+        <TreeView fx:id="entriesView" showRoot="false">
+            <root>
+                <TreeItem fx:id="rootItem" />
+            </root>
+        </TreeView>
+    </center>
+</BorderPane>

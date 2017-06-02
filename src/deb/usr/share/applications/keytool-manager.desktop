@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Keytool Manager
+Comment=A graphical java keytool manager
+Exec=keytool-manager %F
+Icon=/usr/share/doc/keytool-manager/icon.png
+Terminal=false
+Type=Application
+Categories=Development;
+X-Desktop-File-Install-Version=0.22
