@@ -114,6 +114,7 @@ public class KeystoreManager {
         keystore.get().store(Files.newOutputStream(path), password.toCharArray());
         this.path.set(path);
         isUnsaved.set(false);
+        loadEntries();
     }
 
     public ObservableList<Entry> entries(){
@@ -313,6 +314,13 @@ public class KeystoreManager {
         return EasyBind.map(selectedEntry, entry -> {
             System.out.println(entry == null);
             return ! (entry != null && entry.isKey);
+        });
+    }
+
+    public Binding<String> fileNameProperty(){
+        return EasyBind.map(path, p -> {
+            if(p == null) return "";
+            return p.getFileName().toString();
         });
     }
 

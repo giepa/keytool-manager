@@ -5,7 +5,6 @@ import com.cathive.fonts.fontawesome.FontAwesomeIconView;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import javafx.application.Application;
-import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,24 +14,19 @@ import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.bouncycastle.asn1.x500.style.BCStyle;
-import org.fxmisc.easybind.EasyBind;
 import org.keytool.manager.utils.Alerts;
 import org.keytool.manager.utils.CertUtils;
 import org.keytool.manager.utils.GuiceFXMLLoader;
-import org.keytool.manager.utils.TableViewSelectedItem;
+import org.keytool.manager.utils.Icons;
 
-import java.io.File;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.security.KeyStoreException;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 /**
  * @author Gideon Maree
@@ -78,7 +72,7 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         saveKeyStore.disableProperty().bind(keystoreManager.isUnsavedProperty().not());
-        saveAs.disableProperty().bind(keystoreManager.hasPath());
+        saveAs.disableProperty().bind(keystoreManager.hasPath().not());
         newKeyPair.disableProperty().bind(keystoreManager.isLoaded().not());
         entriesView.disableProperty().bind(keystoreManager.isLoaded().not());
         entriesView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
@@ -87,9 +81,18 @@ public class MainController implements Initializable {
         viewDetails.disableProperty().bind(keystoreManager.selectedCertProperty().isNull());
         keystoreManager.entries().addListener((ListChangeListener<KeystoreManager.Entry>) c -> {
             rootItem.getChildren().clear();
+            TreeItem entries = rootItem;
+            if(keystoreManager.hasPath().get()){
+                TreeItem<Path> p = new TreeItem<>();
+                p.setGraphic(Icons.icon(FontAwesomeIcon.ICON_FILE));
+                p.setValue(keystoreManager.pathProperty().get());
+                entries.getChildren().add(p);
+                p.setExpanded(true);
+                entries = p;
+            }
             c.getList().stream()
                     .map(this::getItem)
-                    .forEach(rootItem.getChildren()::add);
+                    .forEach(entries.getChildren()::add);
         });
         entriesView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         entriesView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -109,6 +112,8 @@ public class MainController implements Initializable {
                     parent = parent.getParent();
                 }
                 keystoreManager.selectedEntryProperty().set((KeystoreManager.Entry) parent.getValue());
+            } else {
+                keystoreManager.selectedEntryProperty().set(null);
             }
         });
         application.getParameters()
@@ -122,10 +127,8 @@ public class MainController implements Initializable {
     private TreeItem getItem(KeystoreManager.Entry e) {
         try {
             if (e.isKey) {
-                FontAwesomeIconView icon = new FontAwesomeIconView();
                 TreeItem<KeystoreManager.Entry> item = new TreeItem<>();
-                icon.setIcon(FontAwesomeIcon.ICON_KEY);
-                item.setGraphic(icon);
+                item.setGraphic(Icons.icon(FontAwesomeIcon.ICON_KEY));
                 item.setValue(e);
                 keystoreManager.getCertChain(e.alias)
                         .map(c -> (X509Certificate) c)

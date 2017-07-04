@@ -7,7 +7,7 @@ The tool compiles to a .deb package that I plan to upload to the debian reposito
 Download the debian package here https://github.com/giepa/keytool-manager/blob/master/dist/keytool-manager.deb
 
 ## Technology
---Java 8 +
---JavaFx
+    Java 8 +
+    JavaFx
 
 

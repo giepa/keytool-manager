@@ -14,11 +14,12 @@
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.control.TreeItem?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.Label?>
 <BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.keytool.manager.main.MainController">
          <top>
             <ToolBar prefHeight="40.0" prefWidth="372.0" BorderPane.alignment="CENTER">
               <items>
-                <MenuButton fx:id="newKeyStore" >
+                  <MenuButton fx:id="newKeyStore" >
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#newJKSKeyStoreClicked" text="New JKS Keystore" />
                     </items>
